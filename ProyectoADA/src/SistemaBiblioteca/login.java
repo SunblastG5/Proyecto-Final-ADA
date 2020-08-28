@@ -4,16 +4,16 @@
  * and open the template in the editor.
  */
 package SistemaBiblioteca;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author Usuario
  */
 public class login extends javax.swing.JFrame {
-
     /**
      * Creates new form Panel
      */
+    Interface main_panel = new Interface();
     public login() {
         initComponents();
     }
@@ -31,8 +31,9 @@ public class login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        login_user = new javax.swing.JTextField();
+        login_pass = new javax.swing.JPasswordField();
+        iniciar_sesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,25 +48,33 @@ public class login extends javax.swing.JFrame {
         jLabel3.setText("Contraseña");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        login_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                login_userActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 120, -1));
+        jPanel1.add(login_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 120, -1));
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        login_pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                login_passActionPerformed(evt);
             }
         });
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 120, -1));
+        jPanel1.add(login_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 120, -1));
+
+        iniciar_sesion.setText("Iniciar Sesion");
+        iniciar_sesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciar_sesionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(iniciar_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,13 +84,32 @@ public class login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void login_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_userActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_login_userActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void login_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_passActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_login_passActionPerformed
+
+    private void iniciar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciar_sesionActionPerformed
+        // TODO add your handling code here:
+        String username=login_user.getText();
+        String password=login_pass.getText();
+        if("jhoan".equals(username)&&"1234".equals(password)){
+            JOptionPane.showMessageDialog(null, "Sesion iniciada");
+            this.dispose();
+            main_panel.setVisible(true);
+        }
+        else if("alexis".equals(username)&&"1234".equals(password)){
+            JOptionPane.showMessageDialog(null, "Sesion iniciada");
+            this.dispose();
+            main_panel.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Datos incorrectos");
+        }
+    }//GEN-LAST:event_iniciar_sesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,7 +122,7 @@ public class login extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -120,11 +148,12 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton iniciar_sesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField login_pass;
+    private javax.swing.JTextField login_user;
     // End of variables declaration//GEN-END:variables
 }

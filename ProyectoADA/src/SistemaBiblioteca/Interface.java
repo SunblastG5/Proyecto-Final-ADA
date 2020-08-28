@@ -3,21 +3,66 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package SistemaBiblioteca;
 
+package SistemaBiblioteca;
+import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import java.util.Iterator;
 /**
  *
  * @author Usuario
  */
 public class Interface extends javax.swing.JFrame {
     Gestionador gest= new Gestionador();
-    /**
-     * Creates new form Interface
-     */
+    DefaultTableModel modelo =new DefaultTableModel();
+    
     public Interface() {
         initComponents();
+        add_buttongroups();
     }
 
+    /*public void  CargaAutomatica(){
+        ArrayList<Object> nombrecolumna =new ArrayList<>();
+        nombrecolumna.add("Nombre");
+        nombrecolumna.add("Autor");
+        nombrecolumna.add("Categoria");
+        nombrecolumna.add("Editorial");
+        nombrecolumna.add("Año");
+        nombrecolumna.add("Estado");
+
+        for(Object columna : nombrecolumna){
+            modelo.addColumn(columna);
+        }
+        this.tabladatos.setModel(modelo);
+
+        ArrayList<Object[]>datos =new ArrayList<Object[]>();
+        Object[]informacion1=new Object[]{"GAAA","SIDERAL","Obradearte","Chupetines","2020","Prestado"};
+        datos.add(informacion1);
+        for (Object[]DatosPersonal : datos){
+            modelo.addRow(DatosPersonal);
+        }
+        tabladatos.setModel(modelo);
+    }*/
+    
+    public void add_buttongroups(){
+        si_no.add(rbt_no);
+        si_no.add(rbt_si);
+        search_by.add(sel_name);
+        search_by.add(sel_cat);
+        search_by.add(sel_author);
+        ArrayList<Object> nombrecolumna =new ArrayList<>();
+        nombrecolumna.add("Nombre");
+        nombrecolumna.add("Autor");
+        nombrecolumna.add("Categoria");
+        nombrecolumna.add("Editorial");
+        nombrecolumna.add("Año");
+        nombrecolumna.add("Estado");
+
+        for(Object columna : nombrecolumna){
+            modelo.addColumn(columna);
+        }
+        this.tabladatos.setModel(modelo);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,34 +73,39 @@ public class Interface extends javax.swing.JFrame {
     private void initComponents() {
 
         jFileChooser1 = new javax.swing.JFileChooser();
+        si_no = new javax.swing.ButtonGroup();
+        search_by = new javax.swing.ButtonGroup();
         main_panel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         add_panel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        add_name = new javax.swing.JTextField();
-        add_book = new javax.swing.JButton();
+        txtTitulo = new javax.swing.JTextField();
+        btnIngresar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        add_author = new javax.swing.JTextField();
+        txtAutor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        add_ed = new javax.swing.JTextField();
+        txtEditorial = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        add_year = new javax.swing.JTextField();
+        txtAno = new javax.swing.JTextField();
         message = new javax.swing.JLabel();
-        add_cat = new javax.swing.JComboBox<>();
+        cbxcategoria = new javax.swing.JComboBox<>();
+        rbt_si = new javax.swing.JRadioButton();
+        rbt_no = new javax.swing.JRadioButton();
+        jLabel9 = new javax.swing.JLabel();
         search_panel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         search_by_name = new javax.swing.JTextField();
         search_by_cat = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        search_table = new javax.swing.JTable();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        tabladatos = new javax.swing.JTable();
         search_by_author = new javax.swing.JTextField();
         search = new javax.swing.JButton();
+        sel_name = new javax.swing.JRadioButton();
+        sel_cat = new javax.swing.JRadioButton();
+        sel_author = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,20 +120,20 @@ public class Interface extends javax.swing.JFrame {
         jLabel2.setText("Agregar Libros");
         add_panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
 
-        add_name.addActionListener(new java.awt.event.ActionListener() {
+        txtTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_nameActionPerformed(evt);
+                txtTituloActionPerformed(evt);
             }
         });
-        add_panel.add(add_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 160, -1));
+        add_panel.add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 160, -1));
 
-        add_book.setText("Agregar Libro");
-        add_book.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresar.setText("Registrar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_bookActionPerformed(evt);
+                btnIngresarActionPerformed(evt);
             }
         });
-        add_panel.add(add_book, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
+        add_panel.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
 
         jLabel4.setText("Nombre del Libro");
         add_panel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
@@ -94,36 +144,50 @@ public class Interface extends javax.swing.JFrame {
         jLabel6.setText("Autor del Libro");
         add_panel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
-        add_author.addActionListener(new java.awt.event.ActionListener() {
+        txtAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_authorActionPerformed(evt);
+                txtAutorActionPerformed(evt);
             }
         });
-        add_panel.add(add_author, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 160, -1));
+        add_panel.add(txtAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 160, -1));
 
         jLabel7.setText("Editorial");
         add_panel.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, 20));
 
-        add_ed.addActionListener(new java.awt.event.ActionListener() {
+        txtEditorial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_edActionPerformed(evt);
+                txtEditorialActionPerformed(evt);
             }
         });
-        add_panel.add(add_ed, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 160, -1));
+        add_panel.add(txtEditorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 160, -1));
 
         jLabel8.setText("Año de publicacion");
         add_panel.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
-        add_year.addActionListener(new java.awt.event.ActionListener() {
+        txtAno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_yearActionPerformed(evt);
+                txtAnoActionPerformed(evt);
             }
         });
-        add_panel.add(add_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 160, -1));
+        add_panel.add(txtAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 160, -1));
         add_panel.add(message, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 170, 190));
 
-        add_cat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Seleccione una categoria--", "Generalidades", "Filosofía y Psicología", "Religión, Teología", "Ciencias Sociales", "Lenguas", "Ciencias Básicas", "Tecnología y Ciencias Aplicadas", "Artes y recreación", "Literatura", "Historia y Geografía" }));
-        add_panel.add(add_cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 160, -1));
+        cbxcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Seleccione una categoria--", "Generalidades", "Filosofía y Psicología", "Religión, Teología", "Ciencias Sociales", "Lenguas", "Ciencias Básicas", "Tecnología y Ciencias Aplicadas", "Artes y recreación", "Literatura", "Historia y Geografía" }));
+        add_panel.add(cbxcategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 160, -1));
+
+        rbt_si.setText("Si");
+        rbt_si.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbt_siActionPerformed(evt);
+            }
+        });
+        add_panel.add(rbt_si, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        rbt_no.setText("No");
+        add_panel.add(rbt_no, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, -1));
+
+        jLabel9.setText("Prestamo");
+        add_panel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         jTabbedPane1.addTab("Agregar", add_panel);
 
@@ -141,42 +205,63 @@ public class Interface extends javax.swing.JFrame {
         });
         search_panel.add(search_by_cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 160, -1));
 
-        jLabel10.setText("Busqueda por nombre");
-        search_panel.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 20));
-
-        search_table.setModel(new javax.swing.table.DefaultTableModel(
+        tabladatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nombre del Libro", "Autor del Libro", "Categoria", "Editorial", "Año de publicacion", "Estado"
+                "Nombre del Libro", "Autor del Libro", "Categoria", "Editorial", "Año de publicacion", "Estado"
             }
         ));
-        search_table.getTableHeader().setResizingAllowed(false);
-        search_table.getTableHeader().setReorderingAllowed(false);
-        search_table.setUpdateSelectionOnSort(false);
-        jScrollPane1.setViewportView(search_table);
+        tabladatos.getTableHeader().setResizingAllowed(false);
+        tabladatos.getTableHeader().setReorderingAllowed(false);
+        tabladatos.setUpdateSelectionOnSort(false);
+        jScrollPane1.setViewportView(tabladatos);
 
         search_panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 160, 480, 240));
 
-        jLabel11.setText("Busqueda por Categoria");
-        search_panel.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, 20));
-
-        jLabel12.setText("Busqueda por Autor");
-        search_panel.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, 20));
+        search_by_author.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search_by_authorActionPerformed(evt);
+            }
+        });
         search_panel.add(search_by_author, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 120, -1));
 
         search.setText("Buscar");
+        search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchActionPerformed(evt);
+            }
+        });
         search_panel.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, -1));
+
+        sel_name.setText("Busqueda por nombre");
+        sel_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sel_nameActionPerformed(evt);
+            }
+        });
+        search_panel.add(sel_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 20));
+
+        sel_cat.setText("Busqueda por Categoria");
+        sel_cat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sel_catActionPerformed(evt);
+            }
+        });
+        search_panel.add(sel_cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        sel_author.setText("Busqueda por Autor");
+        search_panel.add(sel_author, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
         jTabbedPane1.addTab("Busqueda", search_panel);
 
@@ -199,33 +284,97 @@ public class Interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void add_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_bookActionPerformed
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         // TODO add your handling code here:
-        String nombre = add_name.getText();
-        String autor = add_author.getText();
-        String categoria = (String)add_cat.getSelectedItem();
-        
-    }//GEN-LAST:event_add_bookActionPerformed
+        String titulo=this.txtTitulo.getText();
+        String autor=this.txtAutor.getText();
+        String editorial=this.txtEditorial.getText();
+        int ano=Integer.parseInt(this.txtAno.getText());
+        String categoria=(String)this.cbxcategoria.getSelectedItem();
+        String estado;
+            if(rbt_no.isSelected()==true){
+                estado="Disponible";
+            } 
+            else{
+                estado="Prestado";
+            }  
+            Libro li=new Libro(titulo,autor,categoria,editorial,ano,estado);//para agregar mas cosas, modificar el constructor de Libro
+            gest.agregarDoc(li);
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
-    private void add_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_nameActionPerformed
+    private void txtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_nameActionPerformed
+    }//GEN-LAST:event_txtTituloActionPerformed
 
-    private void add_authorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_authorActionPerformed
+    private void txtAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAutorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_authorActionPerformed
+    }//GEN-LAST:event_txtAutorActionPerformed
 
-    private void add_edActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_edActionPerformed
+    private void txtEditorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditorialActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_edActionPerformed
+    }//GEN-LAST:event_txtEditorialActionPerformed
 
-    private void add_yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_yearActionPerformed
+    private void txtAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_add_yearActionPerformed
+    }//GEN-LAST:event_txtAnoActionPerformed
 
     private void search_by_catActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_by_catActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_search_by_catActionPerformed
+
+    private void rbt_siActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbt_siActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbt_siActionPerformed
+
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        // TODO add your handling code here:
+        String nombre=search_by_name.getText();
+        String categoria=(String)search_by_cat.getSelectedItem();
+        String autor=search_by_author.getText();
+        ArrayList <Libro> lista_lib = new ArrayList();
+        Iterator <Libro> iterator = lista_lib.iterator();
+        Libro libro;
+        int opt=0;
+        if(sel_name.isSelected()==true){
+            opt=1;
+        }
+        else if (sel_cat.isSelected()==true){
+            opt=2;
+        }
+        else if (sel_author.isSelected()==true){
+            opt=3;
+        }
+        else{
+            message.setText("Debe seleccionar una opcion de busqueda");
+        }
+        lista_lib=gest.buscar_libro(nombre,categoria,autor,opt);
+        modelo.setRowCount(0);
+        Object O[]=null;
+        for (int i = 0; i < lista_lib.size(); i++) {
+            modelo.addRow(O);
+            Libro lib = (Libro) lista_lib.get(i);
+            modelo.setValueAt(lib.getNombre(), i, 0);
+            modelo.setValueAt(lib.getAutor(), i, 1);
+            modelo.setValueAt(lib.getCategoria(), i, 2);
+            modelo.setValueAt(lib.getEditorial(), i, 3);
+            modelo.setValueAt(lib.getPub_year(), i, 4);
+            modelo.setValueAt(lib.getEstado(), i, 5);
+        }
+        this.tabladatos.setModel(modelo);
+        
+    }//GEN-LAST:event_searchActionPerformed
+
+    private void sel_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sel_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sel_nameActionPerformed
+
+    private void sel_catActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sel_catActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sel_catActionPerformed
+
+    private void search_by_authorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_by_authorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_search_by_authorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,18 +412,11 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField add_author;
-    private javax.swing.JButton add_book;
-    private javax.swing.JComboBox<String> add_cat;
-    private javax.swing.JTextField add_ed;
-    private javax.swing.JTextField add_name;
     private javax.swing.JPanel add_panel;
-    private javax.swing.JTextField add_year;
+    private javax.swing.JButton btnIngresar;
+    private javax.swing.JComboBox<String> cbxcategoria;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -282,16 +424,28 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel main_panel;
     private javax.swing.JLabel message;
+    private javax.swing.JRadioButton rbt_no;
+    private javax.swing.JRadioButton rbt_si;
     private javax.swing.JButton search;
+    private javax.swing.ButtonGroup search_by;
     private javax.swing.JTextField search_by_author;
     private javax.swing.JComboBox<String> search_by_cat;
     private javax.swing.JTextField search_by_name;
     private javax.swing.JPanel search_panel;
-    private javax.swing.JTable search_table;
+    private javax.swing.JRadioButton sel_author;
+    private javax.swing.JRadioButton sel_cat;
+    private javax.swing.JRadioButton sel_name;
+    private javax.swing.ButtonGroup si_no;
+    private javax.swing.JTable tabladatos;
+    private javax.swing.JTextField txtAno;
+    private javax.swing.JTextField txtAutor;
+    private javax.swing.JTextField txtEditorial;
+    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 }

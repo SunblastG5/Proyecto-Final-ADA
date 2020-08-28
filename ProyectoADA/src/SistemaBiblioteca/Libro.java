@@ -20,7 +20,16 @@ public class Libro {
     private int pub_year;
     private String codigo;
     private Date fecha_reg;
-    private boolean estado;
+    private String estado;
+
+    public Libro(String nombre, String autor, String categoria, String editorial, int pub_year, String estado) {
+        this.nombre = nombre;
+        this.autor = autor;
+        this.editorial = editorial;
+        this.categoria= categoria;
+        this.pub_year = pub_year;
+        this.estado = estado;
+    }
     
     public int getLib_id() {
         return lib_id;
@@ -86,13 +95,20 @@ public class Libro {
         this.fecha_reg = fecha_reg;
     }
 
-    public boolean isEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Libro{" + "lib_id=" + lib_id + ", nombre=" + nombre + ", autor=" + autor + ", categoria=" + categoria + ", editorial=" + editorial + ", pub_year=" + pub_year + ", codigo=" + codigo + ", fecha_reg=" + fecha_reg + ", estado=" + estado + '}';
+    }
+    
+    
     
 }
 
